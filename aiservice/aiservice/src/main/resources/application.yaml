@@ -1,17 +1,5 @@
 spring:
   application:
-    name: aiservice
-
-  mongodb:
-    uri: mongodb://localhost:27017/airecommendationfitness
-
-eureka:
-  instance:
-    prefer-ip-address: true
-    hostname: localhost
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-server:
-  port: 8083
+    name: ai-service
+  config:
+    import: optional:configserver:http://localhost:8888
