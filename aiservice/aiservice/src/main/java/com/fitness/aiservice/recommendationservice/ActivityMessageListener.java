@@ -21,4 +21,21 @@ public class ActivityMessageListener {
         Recommendation recommendation = activityAiService.generateRecommendation(activity);
         recommendationRepository.save(recommendation);
     }
+
+    @KafkaListener(
+            topics = "activity-events-dlt",
+            groupId = "activity-dlt-group"
+    )
+    public void processFromDlt(Activity activity) {
+
+        log.warn(
+                "AI failed, generating DEFAULT recommendation for activity {}",
+                activity.getId()
+        );
+
+        Recommendation defaultRec =
+                activityAiService.createDefaultRecommendation(activity);
+
+        recommendationRepository.save(defaultRec);
+    }
 }
