@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UserResponse {
     private String id;
+    private String keyCloakId ;
     private String email;
     private String password;
     private String firstname;
