@@ -14,11 +14,11 @@ public class ActivityRequest {
     private String userId ;
     private ActivityType type ;
 
-    private Integer Duration ;
+    private Integer duration ;
     private Integer caloriesBurned ;
     private LocalDateTime startTime;
 
-    private Map<String,Object> additonalMetrics;
+    private Map<String,Object> additionalMetrics;
 
 
 }

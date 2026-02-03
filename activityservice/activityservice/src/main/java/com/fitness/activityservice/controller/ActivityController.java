@@ -1,8 +1,7 @@
 package com.fitness.activityservice.controller;
 
 import com.fitness.activityservice.dto.ActivityRequest;
-import com.fitness.activityservice.dto.ActivityRespone;
-import com.fitness.activityservice.model.Activity;
+import com.fitness.activityservice.dto.ActivityResponse;
 import com.fitness.activityservice.service.ActivityService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +16,16 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping
-    public ResponseEntity<ActivityRespone> trackActivity(@RequestBody ActivityRequest request, @RequestHeader("X-User-ID") String userId){
+    public ResponseEntity<ActivityResponse> trackActivity(@RequestBody ActivityRequest request, @RequestHeader("X-User-ID") String userId){
+        request.setUserId(userId);
         return ResponseEntity.ok(activityService.trackActivity(request));
     }
     @GetMapping
-    public ResponseEntity<List<ActivityRespone>> getUserActivities(@RequestHeader("X-User-ID") String userId) {
+    public ResponseEntity<List<ActivityResponse>> getUserActivities(@RequestHeader("X-User-ID") String userId) {
         return ResponseEntity.ok(activityService.getUserActivities(userId));
+    }
+    @GetMapping("/{activityId}")
+    public ResponseEntity<ActivityResponse> getActivity(@PathVariable String activityId){
+        return ResponseEntity.ok(activityService.getActivityById(activityId));
     }
 }

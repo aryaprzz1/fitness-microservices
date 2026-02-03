@@ -1,7 +1,7 @@
 package com.fitness.activityservice.service;
 
 import com.fitness.activityservice.dto.ActivityRequest;
-import com.fitness.activityservice.dto.ActivityRespone;
+import com.fitness.activityservice.dto.ActivityResponse;
 import com.fitness.activityservice.model.Activity;
 import com.fitness.activityservice.repository.ActivityRepository;
 
@@ -24,7 +24,7 @@ public class ActivityService {
     @Value("${kafka.topic.name}")
     private String topicName ;
 
-    public ActivityRespone trackActivity(ActivityRequest request) {
+    public ActivityResponse trackActivity(ActivityRequest request) {
        boolean isValidUser = userValidationService.validateUser(request.getUserId());
 
        if(!isValidUser){
@@ -36,7 +36,7 @@ public class ActivityService {
                 .duration(request.getDuration())
                 .caloriesBurned(request.getCaloriesBurned())
                 .startTime(request.getStartTime())
-                .additionalMetrics(request.getAdditonalMetrics())
+                .additionalMetrics(request.getAdditionalMetrics())
                 .build() ;
 
         Activity savedActivty = activityRepository.save(activity);
@@ -50,25 +50,31 @@ public class ActivityService {
         return mapToResponse(savedActivty);
     }
 
-    private ActivityRespone mapToResponse(Activity activity) {
-        ActivityRespone response = new ActivityRespone();
+    private ActivityResponse mapToResponse(Activity activity) {
+        ActivityResponse response = new ActivityResponse();
         response.setId(activity.getId());
         response.setUserId(activity.getUserId());
         response.setType(activity.getType());
         response.setDuration(activity.getDuration()) ;
         response.setCaloriesBurned(activity.getCaloriesBurned()) ;
         response.setStartTime(activity.getStartTime()) ;
-        response.setAdditonalMetrics(activity.getAdditionalMetrics()); ;
+        response.setAdditionalMetrics(activity.getAdditionalMetrics()); ;
         response.setCreatedAt(activity.getCreatedAt()) ;
         response.setUpdatedAt(activity.getUpdatedAt()) ;
 
          return response ;
 
     }
-    public List<ActivityRespone> getUserActivities(String userId) {
+    public List<ActivityResponse> getUserActivities(String userId) {
         List<Activity> activityList = activityRepository.findByUserId(userId);
         return activityList.stream()
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());
+    }
+
+    public ActivityResponse getActivityById(String activityId) {
+        return activityRepository.findById(activityId)
+                .map(this::mapToResponse)
+                .orElseThrow(() -> new RuntimeException("Activity not found with id: " + activityId));
     }
 }
