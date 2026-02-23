@@ -1,9 +1,9 @@
-// import './App.css'
+
 import { Box, Button } from "@mui/material"
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { AuthContext } from "react-oauth2-code-pkce"
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from "react-router"
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router"
 import { logout, setCredentials } from "./store/authSlice";
 import ActivityForm from "./components/ActivityForm";
 import ActivityList from "./components/ActivityList";
@@ -20,7 +20,7 @@ const ActivitiesPage = () => {
 
 function App() {
   
-  const { token, tokenData, logIn, logOut, isAuthenticated } 
+  const { token, tokenData, logIn, logOut } 
       = useContext(AuthContext);
   const dispatch = useDispatch();
   const [authReady, setAuthReady] = useState(false);
@@ -32,6 +32,11 @@ function App() {
     }
   }, [token, tokenData, dispatch]);
 
+  const handleLogout = useCallback(() => {
+    dispatch(logout());
+    logOut();
+  }, [dispatch, logOut]);
+
   return (
     <Router>
       {!token ? (
@@ -42,7 +47,7 @@ function App() {
       ) : (
         <div>
          <Box component="section" sx={{ p: 2, border: '1px dashed grey' }}>
-          <Button variant="contained" onClick={logout} >
+          <Button variant="contained" onClick={handleLogout} >
             LOGOUT  
           </Button>
           <Routes>
