@@ -3,16 +3,48 @@
   border-radius: 24px;
   border: 1px solid var(--border-strong);
   background:
-    linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(7, 14, 28, 0.92)),
-    radial-gradient(circle at top right, rgba(57, 194, 166, 0.3), transparent 50%);
-  box-shadow: var(--shadow-soft);
+    linear-gradient(138deg, rgba(16, 22, 35, 0.96), rgba(8, 12, 20, 0.94)),
+    radial-gradient(circle at top right, rgba(84, 113, 156, 0.2), transparent 52%);
+  box-shadow: var(--shadow-soft), var(--shadow-glow);
+  backdrop-filter: blur(2px);
+  animation: rise-in 380ms ease-out;
+}
+
+.landing-shell {
+  position: relative;
+}
+
+.landing-stack {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-shell::before {
+  content: "";
+  position: absolute;
+  inset: 2rem -1rem auto;
+  height: 280px;
+  background:
+    radial-gradient(circle at 8% 20%, rgba(92, 110, 141, 0.16), transparent 38%),
+    radial-gradient(circle at 88% 14%, rgba(74, 94, 124, 0.16), transparent 42%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: stretch;
 }
 
 .hero-chip {
   width: fit-content;
-  background: rgba(57, 194, 166, 0.2);
+  background: rgba(44, 196, 165, 0.2);
   color: var(--text-main);
-  border: 1px solid rgba(57, 194, 166, 0.45);
+  border: 1px solid rgba(44, 196, 165, 0.45);
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .hero-title {
@@ -22,17 +54,52 @@
   color: var(--text-main);
 }
 
+.gradient-title {
+  background: linear-gradient(118deg, #f1f5ff 0%, #bfd0ea 40%, #9fb3d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .hero-subtitle {
   max-width: 56ch;
   color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  flex-wrap: wrap;
+}
+
+.metric-pills {
+  flex-wrap: wrap;
+}
+
+.stat-chip.MuiChip-root {
+  color: #f2f7ff;
+  font-weight: 600;
+  border: 1px solid rgba(126, 159, 219, 0.5);
+}
+
+.stat-chip-primary.MuiChip-root {
+  background: linear-gradient(120deg, rgba(89, 118, 158, 0.24), rgba(62, 83, 117, 0.2));
+}
+
+.stat-chip-violet.MuiChip-root {
+  background: linear-gradient(120deg, rgba(102, 119, 150, 0.22), rgba(72, 84, 109, 0.18));
+}
+
+.stat-chip-gold.MuiChip-root {
+  background: linear-gradient(120deg, rgba(112, 126, 147, 0.22), rgba(79, 90, 107, 0.18));
 }
 
 .app-shell {
   padding: clamp(1rem, 2.6vw, 2rem);
   border-radius: 20px;
   border: 1px solid var(--border-soft);
-  background: linear-gradient(180deg, rgba(10, 19, 36, 0.92), rgba(7, 15, 30, 0.88));
-  box-shadow: var(--shadow-soft);
+  background: linear-gradient(180deg, rgba(10, 16, 27, 0.95), rgba(8, 13, 23, 0.9));
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(148, 176, 216, 0.12);
+  animation: rise-in 420ms ease-out;
 }
 
 .brand-tagline {
@@ -45,18 +112,83 @@
   font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
   font-weight: 700;
   color: var(--text-main);
+  background: linear-gradient(110deg, #eff4ff 5%, #b8c9e2 55%, #93a8c7 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .panel-card {
   border-radius: 16px;
   border: 1px solid var(--border-soft);
-  background: linear-gradient(180deg, rgba(12, 21, 38, 0.85), rgba(8, 17, 33, 0.78));
+  background: linear-gradient(180deg, rgba(16, 24, 38, 0.88), rgba(10, 16, 27, 0.82));
+  box-shadow: inset 0 1px 0 rgba(149, 176, 215, 0.08);
+}
+
+.demo-credentials {
+  border: 1px solid rgba(126, 159, 219, 0.42);
+  background:
+    linear-gradient(160deg, rgba(13, 21, 36, 0.8), rgba(9, 14, 23, 0.74)),
+    radial-gradient(circle at 100% 0, rgba(92, 111, 146, 0.2), transparent 45%);
+}
+
+.hero-preview {
+  padding: clamp(1rem, 2.8vw, 1.4rem);
+  background:
+    linear-gradient(160deg, rgba(16, 24, 40, 0.9), rgba(9, 14, 23, 0.84)),
+    radial-gradient(circle at 100% 0, rgba(97, 123, 164, 0.16), transparent 48%);
+}
+
+.preview-tagline {
+  width: fit-content;
+  color: var(--accent-alt);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  border: 1px solid rgba(127, 153, 190, 0.35);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  background: rgba(75, 95, 128, 0.2);
+}
+
+.preview-list .MuiTypography-root {
+  color: var(--text-soft);
+  border-left: 2px solid rgba(96, 121, 160, 0.35);
+  padding-left: 0.75rem;
 }
 
 .section-title {
   color: var(--text-main);
   font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
   font-weight: 700;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.highlight-card {
+  padding: 1rem 1.1rem;
+  min-height: 130px;
+}
+
+.highlight-card-blue {
+  background:
+    linear-gradient(170deg, rgba(20, 31, 48, 0.9), rgba(11, 18, 31, 0.86)),
+    radial-gradient(circle at 100% 0, rgba(95, 124, 167, 0.16), transparent 45%);
+}
+
+.highlight-card-green {
+  background:
+    linear-gradient(170deg, rgba(20, 31, 48, 0.9), rgba(11, 18, 31, 0.86)),
+    radial-gradient(circle at 100% 0, rgba(84, 112, 151, 0.16), transparent 45%);
+}
+
+.highlight-card-violet {
+  background:
+    linear-gradient(170deg, rgba(20, 31, 48, 0.9), rgba(11, 18, 31, 0.86)),
+    radial-gradient(circle at 100% 0, rgba(104, 125, 159, 0.16), transparent 45%);
 }
 
 .section-subtitle {
@@ -72,19 +204,45 @@
 .activity-card {
   cursor: pointer;
   border-radius: 14px;
-  border: 1px solid rgba(101, 119, 150, 0.35);
-  background: linear-gradient(170deg, rgba(21, 32, 52, 0.72), rgba(10, 20, 36, 0.92));
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  border: 1px solid rgba(112, 132, 165, 0.36);
+  background: linear-gradient(170deg, rgba(20, 30, 46, 0.78), rgba(11, 17, 28, 0.94));
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.activity-grid .activity-card:nth-child(3n + 1) {
+  border-color: rgba(112, 131, 161, 0.45);
+}
+
+.activity-grid .activity-card:nth-child(3n + 2) {
+  border-color: rgba(112, 131, 161, 0.45);
+}
+
+.activity-grid .activity-card:nth-child(3n) {
+  border-color: rgba(112, 131, 161, 0.45);
+}
+
+.activity-grid .activity-card:nth-child(3n + 1):hover {
+  box-shadow: 0 14px 30px rgba(24, 35, 54, 0.5);
+}
+
+.activity-grid .activity-card:nth-child(3n + 2):hover {
+  box-shadow: 0 14px 30px rgba(24, 35, 54, 0.5);
+}
+
+.activity-grid .activity-card:nth-child(3n):hover {
+  box-shadow: 0 14px 30px rgba(24, 35, 54, 0.5);
 }
 
 .activity-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(57, 194, 166, 0.6);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  border-color: rgba(125, 145, 177, 0.68);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.34);
+  background: linear-gradient(170deg, rgba(25, 36, 55, 0.85), rgba(13, 20, 33, 0.95));
 }
 
 .metric-line {
   color: var(--text-main);
+  font-weight: 500;
 }
 
 .metric-hint {
@@ -98,7 +256,7 @@
 }
 
 .detail-bullet {
-  color: var(--text-main);
+  color: var(--text-soft);
   margin-bottom: 0.25rem;
 }
 
@@ -106,26 +264,29 @@
   border-radius: 999px;
   text-transform: none;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  background: linear-gradient(120deg, var(--accent-main), #27b38f);
-  color: #06211b;
+  letter-spacing: 0.025em;
+  padding-inline: 1.2rem;
+  background: linear-gradient(120deg, #4f78aa, #3f5f89);
+  color: #f2f6ff;
+  box-shadow: 0 10px 22px rgba(31, 47, 74, 0.42);
 }
 
 .btn-primary.MuiButton-root:hover {
-  background: linear-gradient(120deg, #63d6bf, #35c8a3);
+  background: linear-gradient(120deg, #5e87bb, #486a98);
+  box-shadow: 0 12px 24px rgba(31, 47, 74, 0.48);
 }
 
 .btn-secondary.MuiButton-root {
   border-radius: 999px;
   text-transform: none;
   font-weight: 700;
-  border-color: rgba(57, 194, 166, 0.72);
+  border-color: rgba(118, 138, 167, 0.72);
   color: var(--text-main);
 }
 
 .btn-secondary.MuiButton-root:hover {
-  border-color: rgba(57, 194, 166, 0.98);
-  background: rgba(57, 194, 166, 0.08);
+  border-color: rgba(137, 158, 189, 0.98);
+  background: rgba(98, 124, 163, 0.14);
 }
 
 .infra-card {
@@ -137,17 +298,120 @@
   border-radius: 14px;
   border: 1px solid var(--border-soft);
   background: rgba(4, 10, 20, 0.65);
+  object-fit: cover;
 }
 
 .infra-flow {
   padding: 1rem;
   border-radius: 12px;
-  border: 1px dashed rgba(120, 143, 178, 0.55);
-  background: rgba(8, 16, 31, 0.65);
+  border: 1px dashed rgba(108, 125, 151, 0.55);
+  background: rgba(9, 14, 23, 0.72);
 }
 
 .infra-services-title {
   margin-top: 0.35rem;
   font-weight: 700;
+  color: #a9bddf;
+}
+
+.dashboard-wrap {
+  position: relative;
+}
+
+.dashboard-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 94% 6%, rgba(86, 105, 136, 0.12), transparent 26%),
+    radial-gradient(circle at 12% 78%, rgba(79, 99, 130, 0.1), transparent 30%);
+  pointer-events: none;
+}
+
+.panel-card .MuiCardContent-root,
+.panel-card form {
+  padding: 1.25rem;
+}
+
+.panel-card .MuiDivider-root {
+  border-color: rgba(125, 149, 188, 0.34);
+}
+
+.panel-card .MuiChip-root {
+  background: rgba(76, 97, 129, 0.3);
+  border: 1px solid rgba(120, 140, 173, 0.35);
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.panel-card .MuiTypography-h6 {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.panel-card .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.panel-card .MuiOutlinedInput-root {
+  color: var(--text-main);
+  background: rgba(8, 17, 33, 0.62);
+  border-radius: 10px;
+}
+
+.panel-card .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(120, 143, 178, 0.45);
+}
+
+.panel-card .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(129, 155, 194, 0.75);
+}
+
+.panel-card .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent-main);
+  border-width: 1px;
+}
+
+.panel-card .MuiInputLabel-root.Mui-focused {
   color: var(--accent-main);
+}
+
+.MuiButton-text {
+  text-transform: none;
+  color: var(--accent-alt);
+  font-weight: 600;
+}
+
+.MuiButton-text:hover {
+  background: rgba(120, 145, 182, 0.12);
+}
+
+.panel-card .MuiInputBase-input::placeholder {
+  color: rgba(200, 214, 236, 0.68);
+  opacity: 1;
+}
+
+.panel-card .MuiSelect-icon {
+  color: rgba(161, 189, 232, 0.9);
+}
+
+@media (max-width: 980px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

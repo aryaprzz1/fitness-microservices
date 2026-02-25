@@ -39,39 +39,92 @@ function App() {
   return (
     <Router>
       {!token ? (
-        <Container maxWidth="lg" sx={{ py: { xs: 8, md: 12 } }}>
-          <Stack spacing={3}>
+        <Container maxWidth="lg" className="landing-shell" sx={{ py: { xs: 8, md: 12 } }}>
+          <Stack spacing={3.5} className="landing-stack">
             <Paper className="hero-card" elevation={0}>
-              <Stack spacing={3}>
-                <Chip label="Fitness MicroServices" className="hero-chip" />
-                <Typography variant="h3" className="hero-title">
-                  Train smarter with AI-guided activity tracking
-                </Typography>
-                <Typography variant="body1" className="hero-subtitle">
-                  Log workouts, monitor progress, and get actionable recommendations powered by your Keycloak-secured account.
-                </Typography>
-                <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-                  <Button size="large" variant="contained" className="btn-primary" onClick={() => {logIn();}}>
-                    LOGIN
-                  </Button>
+              <Box className="hero-layout">
+                <Stack spacing={3}>
+                  <Chip label="Fitness MicroServices" className="hero-chip" />
+                  <Typography variant="h3" className="hero-title gradient-title">
+                    Train smarter with AI-guided activity tracking
+                  </Typography>
+                  <Typography variant="body1" className="hero-subtitle">
+                    Log workouts, monitor progress, and get actionable recommendations powered by your Keycloak-secured account.
+                  </Typography>
+                  <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} className="hero-actions">
+                    <Button size="large" variant="contained" className="btn-primary" onClick={() => {logIn();}}>
+                      LOGIN
+                    </Button>
+                    <Button
+                      size="large"
+                      variant="outlined"
+                      className="btn-secondary"
+                      href="#infra-section"
+                    >
+                      View Architecture
+                    </Button>
+                  </Stack>
+                  <Stack direction={{ xs: "column", sm: "row" }} spacing={1.2} className="metric-pills">
+                    <Chip label="Secure Keycloak Login" className="stat-chip stat-chip-primary" />
+                    <Chip label="AI Recommendations" className="stat-chip stat-chip-violet" />
+                    <Chip label="Realtime Service Flow" className="stat-chip stat-chip-gold" />
+                  </Stack>
+                  <Paper elevation={0} className="demo-credentials" sx={{ p: 2, borderRadius: 2 }}>
+                    <Typography variant="body2" className="section-subtitle">
+                      Recruiter demo credentials
+                    </Typography>
+                    <Typography variant="body2">
+                      Username: <strong>user1</strong>
+                    </Typography>
+                    <Typography variant="body2">
+                      Password: <strong>user1</strong>
+                    </Typography>
+                  </Paper>
                 </Stack>
-                <Paper elevation={0} sx={{ p: 2, borderRadius: 2, backgroundColor: "rgba(255, 255, 255, 0.04)" }}>
-                  <Typography variant="body2" className="section-subtitle">
-                    Recruiter demo credentials
-                  </Typography>
-                  <Typography variant="body2">
-                    Username: <strong>user1</strong>
-                  </Typography>
-                  <Typography variant="body2">
-                    Password: <strong>user1</strong>
-                  </Typography>
+
+                <Paper elevation={0} className="hero-preview panel-card">
+                  <Stack spacing={2}>
+                    <Typography variant="overline" className="preview-tagline">
+                      Why this stack
+                    </Typography>
+                    <Typography variant="h6" className="section-title">
+                      Production-style microservices workflow
+                    </Typography>
+                    <Stack spacing={1} className="preview-list">
+                      <Typography variant="body2">Gateway routes secure API calls</Typography>
+                      <Typography variant="body2">Kafka streams activity events asynchronously</Typography>
+                      <Typography variant="body2">Gemini-powered AI returns actionable feedback</Typography>
+                      <Typography variant="body2">Eureka + Config keep services resilient</Typography>
+                    </Stack>
+                  </Stack>
                 </Paper>
-              </Stack>
+              </Box>
             </Paper>
 
-            <Paper className="panel-card infra-card" elevation={0}>
+            <Box className="highlight-grid">
+              <Paper className="panel-card highlight-card highlight-card-blue" elevation={0}>
+                <Typography variant="h6" className="section-title">Track Better</Typography>
+                <Typography variant="body2" className="section-subtitle">
+                  Log activity duration and calories with a clean dashboard experience.
+                </Typography>
+              </Paper>
+              <Paper className="panel-card highlight-card highlight-card-green" elevation={0}>
+                <Typography variant="h6" className="section-title">Analyze Faster</Typography>
+                <Typography variant="body2" className="section-subtitle">
+                  Get automatic analysis, suggestions, and safety guidance for each session.
+                </Typography>
+              </Paper>
+              <Paper className="panel-card highlight-card highlight-card-violet" elevation={0}>
+                <Typography variant="h6" className="section-title">Scale Confidently</Typography>
+                <Typography variant="body2" className="section-subtitle">
+                  Built on gateway, service discovery, config server, and async messaging.
+                </Typography>
+              </Paper>
+            </Box>
+
+            <Paper id="infra-section" className="panel-card infra-card" elevation={0}>
               <Stack spacing={2.5}>
-                <Typography variant="h5" className="section-title">
+                <Typography variant="h5" className="section-title gradient-title">
                   Backend Infrastructure
                 </Typography>
                 <Typography variant="body2" className="section-subtitle">
@@ -98,7 +151,7 @@ function App() {
           </Stack>
         </Container>
       ) : (
-        <Box sx={{ py: { xs: 3, md: 5 } }}>
+        <Box className="dashboard-wrap" sx={{ py: { xs: 3, md: 5 } }}>
           <Container maxWidth="lg">
             <Paper elevation={0} className="app-shell">
               <Stack

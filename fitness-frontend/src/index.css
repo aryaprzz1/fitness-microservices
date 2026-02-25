@@ -1,14 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
 :root {
-  --bg-base: #071327;
-  --bg-surface: #0f1d37;
-  --text-main: #e6f0ff;
-  --text-muted: #9fb2ca;
-  --accent-main: #39c2a6;
-  --border-soft: rgba(94, 113, 144, 0.38);
-  --border-strong: rgba(94, 113, 144, 0.6);
-  --shadow-soft: 0 22px 48px rgba(3, 8, 17, 0.45);
+  --bg-base: #05080f;
+  --bg-surface: #0d131f;
+  --bg-elevated: #131c2b;
+  --text-main: #e7ecf7;
+  --text-muted: #9ba7be;
+  --text-soft: #c1cadc;
+  --accent-main: #5d8fca;
+  --accent-strong: #79a8de;
+  --accent-alt: #88a8ce;
+  --accent-violet: #6e83ab;
+  --accent-rose: #7b8ba6;
+  --accent-gold: #8f9cb2;
+  --border-soft: rgba(118, 132, 158, 0.32);
+  --border-strong: rgba(128, 144, 172, 0.52);
+  --shadow-soft: 0 24px 52px rgba(2, 5, 12, 0.56);
+  --shadow-glow: 0 0 0 1px rgba(106, 137, 180, 0.18), 0 16px 40px rgba(8, 18, 35, 0.42);
   font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -34,13 +42,39 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(ellipse 60% 35% at 12% 8%, rgba(57, 194, 166, 0.18), transparent 60%),
-    radial-gradient(ellipse 45% 30% at 88% 18%, rgba(84, 141, 255, 0.17), transparent 60%),
-    linear-gradient(160deg, #061025 0%, #08162c 45%, #071327 100%);
+    radial-gradient(ellipse 60% 36% at 12% 8%, rgba(68, 93, 135, 0.16), transparent 60%),
+    radial-gradient(ellipse 42% 28% at 88% 16%, rgba(74, 96, 130, 0.14), transparent 60%),
+    radial-gradient(ellipse 58% 52% at 50% 110%, rgba(43, 55, 79, 0.2), transparent 70%),
+    linear-gradient(160deg, #04070e 0%, #080e18 46%, #070c15 100%);
   color: var(--text-main);
+  letter-spacing: 0.005em;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 180ms ease;
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+::selection {
+  background: rgba(93, 143, 202, 0.28);
+  color: #f4fbff;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(10, 14, 23, 0.6);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(115, 145, 184, 0.72), rgba(76, 101, 137, 0.82));
+  border: 2px solid rgba(8, 12, 20, 0.84);
 }
