@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-labelledby="title desc">
+  <title id="title">Fitness Microservices Backend Infrastructure</title>
+  <desc id="desc">Architecture flow from React frontend and Keycloak to API Gateway, services, Kafka, and Gemini API.</desc>
+  <defs>
+    <style>
+      .bg { fill: #081428; }
+      .panel { fill: #0f1d37; stroke: #6d7f9e; stroke-width: 2; rx: 14; }
+      .node { fill: #182744; stroke: #8ca1c8; stroke-width: 2; rx: 12; }
+      .gateway { fill: #6f2c2c; stroke: #e5a89f; stroke-width: 2; rx: 12; }
+      .security { fill: #3a4c1f; stroke: #a8c97a; stroke-width: 2; rx: 12; }
+      .service { fill: #4a2a5e; stroke: #cf95df; stroke-width: 2; rx: 12; }
+      .kafka { fill: #1f2534; stroke: #97a2be; stroke-width: 2; rx: 12; }
+      .line { stroke: #d4dbe8; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .label { fill: #eef3ff; font-family: "Segoe UI", sans-serif; font-size: 24px; font-weight: 600; }
+      .small { fill: #d6dff1; font-family: "Segoe UI", sans-serif; font-size: 19px; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L8,4 z" fill="#d4dbe8" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="700" />
+  <rect class="panel" x="170" y="45" width="840" height="610" />
+
+  <rect class="node" x="30" y="250" width="130" height="150" />
+  <text class="small" x="95" y="315" text-anchor="middle">React</text>
+  <text class="small" x="95" y="343" text-anchor="middle">Frontend</text>
+
+  <rect class="gateway" x="210" y="280" width="175" height="90" />
+  <text class="label" x="298" y="336" text-anchor="middle">API Gateway</text>
+
+  <rect class="security" x="1070" y="240" width="100" height="160" />
+  <text class="small" x="1120" y="312" text-anchor="middle">Keycloak</text>
+  <text class="small" x="1120" y="338" text-anchor="middle">Auth</text>
+
+  <rect class="service" x="450" y="150" width="220" height="90" />
+  <text class="label" x="560" y="205" text-anchor="middle">User Service</text>
+  <text class="small" x="560" y="232" text-anchor="middle">(Postgres)</text>
+
+  <rect class="service" x="450" y="280" width="220" height="90" />
+  <text class="label" x="560" y="335" text-anchor="middle">Activity Service</text>
+  <text class="small" x="560" y="362" text-anchor="middle">(MongoDB)</text>
+
+  <rect class="kafka" x="730" y="280" width="170" height="90" />
+  <text class="label" x="815" y="334" text-anchor="middle">Kafka</text>
+
+  <rect class="service" x="730" y="430" width="220" height="90" />
+  <text class="label" x="840" y="484" text-anchor="middle">AI Service</text>
+  <text class="small" x="840" y="511" text-anchor="middle">(Gemini API)</text>
+
+  <rect class="node" x="360" y="540" width="170" height="80" />
+  <text class="small" x="445" y="588" text-anchor="middle">Config Server</text>
+
+  <rect class="node" x="580" y="540" width="130" height="80" />
+  <text class="small" x="645" y="588" text-anchor="middle">Eureka</text>
+
+  <path class="line" d="M160 325 L208 325" />
+  <path class="line" d="M385 305 L448 195" />
+  <path class="line" d="M385 325 L448 325" />
+  <path class="line" d="M670 325 L728 325" />
+  <path class="line" d="M815 370 L840 428" />
+  <path class="line" d="M950 475 L1068 320" />
+  <path class="line" d="M385 345 L1068 320" />
+</svg>

@@ -1,42 +1,153 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.hero-card {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 24px;
+  border: 1px solid var(--border-strong);
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(7, 14, 28, 0.92)),
+    radial-gradient(circle at top right, rgba(57, 194, 166, 0.3), transparent 50%);
+  box-shadow: var(--shadow-soft);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.hero-chip {
+  width: fit-content;
+  background: rgba(57, 194, 166, 0.2);
+  color: var(--text-main);
+  border: 1px solid rgba(57, 194, 166, 0.45);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-title {
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hero-subtitle {
+  max-width: 56ch;
+  color: var(--text-muted);
 }
 
-.card {
-  padding: 2em;
+.app-shell {
+  padding: clamp(1rem, 2.6vw, 2rem);
+  border-radius: 20px;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, rgba(10, 19, 36, 0.92), rgba(7, 15, 30, 0.88));
+  box-shadow: var(--shadow-soft);
 }
 
-.read-the-docs {
-  color: #888;
+.brand-tagline {
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--accent-main);
+}
+
+.brand-title {
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.panel-card {
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, rgba(12, 21, 38, 0.85), rgba(8, 17, 33, 0.78));
+}
+
+.section-title {
+  color: var(--text-main);
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.activity-card {
+  cursor: pointer;
+  border-radius: 14px;
+  border: 1px solid rgba(101, 119, 150, 0.35);
+  background: linear-gradient(170deg, rgba(21, 32, 52, 0.72), rgba(10, 20, 36, 0.92));
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(57, 194, 166, 0.6);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.metric-line {
+  color: var(--text-main);
+}
+
+.metric-hint {
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.detail-text {
+  color: var(--text-main);
+}
+
+.detail-bullet {
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.btn-primary.MuiButton-root {
+  border-radius: 999px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(120deg, var(--accent-main), #27b38f);
+  color: #06211b;
+}
+
+.btn-primary.MuiButton-root:hover {
+  background: linear-gradient(120deg, #63d6bf, #35c8a3);
+}
+
+.btn-secondary.MuiButton-root {
+  border-radius: 999px;
+  text-transform: none;
+  font-weight: 700;
+  border-color: rgba(57, 194, 166, 0.72);
+  color: var(--text-main);
+}
+
+.btn-secondary.MuiButton-root:hover {
+  border-color: rgba(57, 194, 166, 0.98);
+  background: rgba(57, 194, 166, 0.08);
+}
+
+.infra-card {
+  padding: clamp(1rem, 2.5vw, 2rem);
+}
+
+.infra-image {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: rgba(4, 10, 20, 0.65);
+}
+
+.infra-flow {
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px dashed rgba(120, 143, 178, 0.55);
+  background: rgba(8, 16, 31, 0.65);
+}
+
+.infra-services-title {
+  margin-top: 0.35rem;
+  font-weight: 700;
+  color: var(--accent-main);
 }
